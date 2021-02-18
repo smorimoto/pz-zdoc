@@ -1,1 +1,10 @@
+/*
+ * this is needed in situations where we are building on CI but to not have ability
+ * to configure execution conditions other then setting environment variables
+ */
+def noChangelog = System.getProperty('zdoc.nochangelog')
+if (noChangelog != null && Boolean.valueOf(noChangelog)) {
+	gradle.startParameter.excludedTaskNames += 'generateChangelog'
+}
+
 rootProject.name = 'pz-zdoc'
